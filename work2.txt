@@ -1,0 +1,18 @@
+var counter = function(arr){
+  return 'This array has ' + arr.length + ' elements in it';
+};
+
+var adder = function(a,b){
+    return `The sum of the numbers is ${a+b}`;
+};
+
+var pi = 3.14;
+
+module.exports.counter = counter;
+module.exports.adder = adder;
+module.exports.pi = pi;
+
+
+ // or module.exports.counter = function(arr){
+ //  return 'This array has ' + arr.length + ' elements in it';
+ // };

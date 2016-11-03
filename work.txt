@@ -1,0 +1,137 @@
+/*
+
+// normal function statement
+
+function sayhi() {
+  console.log('hi');
+}
+
+
+sayhi();
+
+// function expression
+
+var sayBye = function(){
+  console.log('bye');
+};
+
+setTimeout(function(){
+  sayBye();
+},5000);
+
+*/
+
+/*
+//  export and module from count
+
+      var stuff = require('./count');
+
+      console.log(stuff.counter(['dibyo','asif','dawn','asif']));
+      console.log(stuff.adder(1,2));
+      console.log('value of Pi is : '+stuff.pi);
+
+*/
+
+
+// core modules
+
+  var events = require('events');
+  var util = require('util');
+
+ var myEmitter = new events.EventEmitter();
+
+ myEmitter.on('someEvent', function(mssg) {
+    console.log(mssg);
+ });
+
+myEmitter.emit('someEvent','You have done it !! ');
+
+
+
+// core module
+
+ var events = require('events');
+ var util = require('util');
+
+ var person = function (name) {
+   this.name = name;
+ };
+
+  util.inherits(person, events.EventEmitter);
+
+  var james = new person('james');
+  var dawn = new person('dawn');
+  var ryu = new person('ryu');
+
+  var people= [james, dawn, ryu];
+
+  people.forEach(function(person) {
+    person.on('speak', function(mssg){
+      console.log(person.name + ' said : ' + mssg);
+    });
+  });
+
+james.emit('speak', 'hello guys');
+
+
+
+
+// core module - reading and writing - fs
+
+  var fs = require('fs');
+
+var readme = fs.readFileSync('readme.txt', 'utf8');
+
+    //  its an synchronous method
+
+fs.writeFileSync('writeme1.txt', readme);
+
+
+
+
+
+
+
+
+// core module - reading and writing - fs
+
+  var fs = require('fs');
+
+   fs.readFile('readme.txt', 'utf8', function(err, data){
+    fs.writeFile('writeme2.txt', data )
+});
+
+ console.log('test'); // testing the asynchronous behaviour
+
+    //  its an Asynchronous method
+
+ /// non blocking code ... it is much quicker when you have multiple codes ..
+
+
+
+
+
+
+
+
+
+
+
+
+ // delete a file or directory or create it
+
+   var fs = require('fs');
+
+ // delete file   fs.unlink('writeme2.txt');
+
+ // make folder   fs.mkdirSync('stuff');
+
+ // delete directory fs.rmdirSync('stuff');
+
+ // lets make a directory asynchronously .. remember we need a callback functin now
+
+  fs.mkdir('stuff', function() {
+     fs.readFile('readme.txt', 'utf8' , function(err, data){
+       fs.writeFile('./stuff/wrte.txt', data);
+     });
+  });
