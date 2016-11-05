@@ -1,14 +1,19 @@
-// creatng a server and piping the readme to response
+// creatng a server and reading an json file 
 
 var http = require('http');
 var fs = require('fs');
 
 var server = http.createServer(function(req, res){
    console.log('req was made : ' + req.url);
-   var myReadStream = fs.createReadStream(__dirname +'/readit.txt', 'utf8');
 
-      res.writeHead(200,{'content': 'text/plain'});    // 200 status code
-   myReadStream.pipe(res);
+   res.writeHead(200,{'Content-Type': 'application/json'});    // 200 status code
+   var myObj = {
+     name: 'Dawn',
+     job: 'Coder',
+     age: 19
+   };
+
+   res.end(JSON.stringify(myObj) );
 });
 
 server.listen(3000, '127.0.0.1');
