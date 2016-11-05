@@ -1,20 +1,37 @@
-// creatng a server and reading an json file 
+// ROUTING SERVER
 
 var http = require('http');
 var fs = require('fs');
 
-var server = http.createServer(function(req, res){
-   console.log('req was made : ' + req.url);
+var server = http.createServer(function(req, res) {
+  console.log('request was made: '+ req.url);
 
-   res.writeHead(200,{'Content-Type': 'application/json'});    // 200 status code
-   var myObj = {
-     name: 'Dawn',
-     job: 'Coder',
-     age: 19
-   };
+  if (req.url === '/home' || req.url === '/') {
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      fs.createReadStream(__dirname + '/index.html').pipe(res);
+  }
 
-   res.end(JSON.stringify(myObj) );
+ else if (req.url === '/contact') {
+   res.writeHead(200, {'Content-Type':'text/html'});
+   fs.createReadStream(__dirname + '/contacts.html').pipe(res);
+ }
+ else if(req.url === '/api/dawn') {
+
+   var ninjas = [{name: 'dawn', age: 19},{name:'yoshi', age: 32}];
+
+   res.writeHead(200, {'Content-Type': 'application/json'});
+
+   res.end(JSON.stringify(ninjas));
+
+ }
+
+ else{
+   res.writeHead(404, {'Content-Type': 'text/html'});
+
+   fs.createReadStream(__dirname + '/404.html').pipe(res);
+
+ }
 });
 
 server.listen(3000, '127.0.0.1');
-console.log('yo dwags , now listening to port 3000'); // port reffering app.js file
+console.log('Hey fellas , now lstening to port 3000');
