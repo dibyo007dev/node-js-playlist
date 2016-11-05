@@ -9,6 +9,18 @@ function sayhi() {
 
 sayhi();
 
+
+
+
+
+
+
+
+
+
+
+
+
 // function expression
 
 var sayBye = function(){
@@ -33,6 +45,13 @@ setTimeout(function(){
 */
 
 
+
+
+
+
+
+
+
 // core modules
 
   var events = require('events');
@@ -45,6 +64,18 @@ setTimeout(function(){
  });
 
 myEmitter.emit('someEvent','You have done it !! ');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -135,3 +166,68 @@ fs.writeFileSync('writeme1.txt', readme);
        fs.writeFile('./stuff/wrte.txt', data);
      });
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // creatng a server
+
+  var http = require('http');
+
+  var server = http.createServer(function(req, res){
+     console.log('req was made : ' + req.url);
+     res.writeHead(200,{'content': 'text/plain'});   // 200 status code
+     res.end('hello guys');
+  });
+
+  server.listen(3000, '127.0.0.1');
+  console.log('yo dwags , now listening to port 3000'); // port reffering app.js file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// reading and writing stream
+
+var http = require('http');
+var fs = require('fs');
+
+var myReadStream = fs.createReadStream(__dirname +'/readit.txt', 'utf8');
+var myWriteStream = fs.createWriteStream(__dirname + '/writeme2.txt');
+
+myReadStream.on('data',function(chunk){
+  console.log('new chunk recieved :');
+  myWriteStream.write(chunk);
+});
+
+
+
+
+
+
+
+
+
+// pipe
