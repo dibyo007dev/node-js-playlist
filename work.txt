@@ -395,3 +395,18 @@ console.log('Hey fellas , now lstening to port 3000');
 
 
 ------------ will use express and nodemon
+
+var express = require('express');
+
+var app = express();
+
+app.get('/', function(req, res){
+  res.send('this is the homepage');
+});
+
+app.get('/contact', function(req, res){
+  res.send('this is the contact page');
+});
+
+app.listen(3000);
+console.log('Yo fellas, now listening to port 3000' );
