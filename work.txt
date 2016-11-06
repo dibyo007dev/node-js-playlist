@@ -410,3 +410,47 @@ app.get('/contact', function(req, res){
 
 app.listen(3000);
 console.log('Yo fellas, now listening to port 3000' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------ using routing params
+
+var express = require('express');
+
+var app = express();
+
+app.get('/', function(req, res){
+  res.send('this is the homepage');
+});
+
+app.get('/contact', function(req, res){
+  res.send('this is the contact page');
+});
+
+app.get('/profile/:id', function(req, res){
+    res.send('You have requested to a profile with an ID : ' + req.params.id);
+});
+
+app.listen(3000);
+console.log('Yo fellas, now listening to port 3000' );
