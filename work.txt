@@ -454,3 +454,96 @@ app.get('/profile/:id', function(req, res){
 
 app.listen(3000);
 console.log('Yo fellas, now listening to port 3000' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------ view engine -- EJS templating
+
+var express = require('express');
+
+var app = express();
+
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/contact', function(req, res){
+  res.sendFile(__dirname + '/contacts.html');
+});
+
+app.get('/profile/:name', function(req, res){
+  var data = {age: 29, job: 'coder', hobbies: ['eating', 'fighting', 'coding']};
+    res.render('profile', {person: req.params.name, data: data});
+});
+
+app.listen(3000);
+console.log('Yo fellas, now listening to port 3000' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------- partial ejs
+
+var express = require('express');
+
+var app = express();
+
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res){
+  res.render('index');
+});
+
+app.get('/contact', function(req, res){
+  res.render('contacts');
+});
+
+app.get('/profile/:name', function(req, res){
+  var data = {age: 29, job: 'coder', hobbies: ['eating', 'fighting', 'coding']};
+    res.render('profile', {person: req.params.name, data: data});
+});
+
+app.listen(3000);
+console.log('Yo fellas, now listening to port 3000' );
+
+
+////////////////////    <% include partial/nav.ejs %>
+
+
+
+when we add through <link href> any css file to the contact.ejs or any ejs files ... being static .. it will not work
+with the dynamic server .. its request will not get counted ... network setting will show status 404: not find in case of that
+css file... so yeah
+
+so whats next ??
+
+ ya we have inbuilt middleware for it
+
+  what the fuck is it ??? Middleware ??
+
+It is a peice of code .. which runs between req and response !
+ we get it packed with npm express

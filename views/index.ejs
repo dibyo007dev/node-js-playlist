@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+
 
 <html>
 
    <head>
      <style>
           body {
-            background: grey;
+            background: lightblue;
             font-weight: bolder ;
             text-transform: uppercase;
             color: white;
@@ -19,29 +19,19 @@
             text-align: center;
 
           }
-          p, li, h2{
+          p{
             font-size: 26px;
             text-align: center;
           }
-
-
 
      </style>
 
    </head>
 
    <body>
-
      <% include partial/nav.ejs %>
-     <h1> Hey guys, Welcome to the profile of <%= person %> </h1>
-     <p><strong>Age: </strong> <%= data.age %> </p>
-     <p><strong>JOB: </strong> <%= data.job %> </p>
-     <h2>Hobbies</h2>
-     <ul>
-       <% data.hobbies.forEach(function(item){ %>
-         <li><%= item %></li>
-       <% }); %>
-     </ul>
+     <h1> Hey guys, how the hell are you </h1>
+     <p>Does it matter much to mee ... hell no</p>
 
    </body>
 
